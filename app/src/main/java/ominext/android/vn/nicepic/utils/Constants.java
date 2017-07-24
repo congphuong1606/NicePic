@@ -1,4 +1,4 @@
-package ominext.android.vn.nicepic.common;
+package ominext.android.vn.nicepic.utils;
 
 /**
  * Created by MyPC on 24/07/2017.

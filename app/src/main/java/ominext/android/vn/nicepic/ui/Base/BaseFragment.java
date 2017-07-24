@@ -1,4 +1,4 @@
-package ominext.android.vn.nicepic.Base;
+package ominext.android.vn.nicepic.ui.Base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

@@ -39,11 +39,11 @@
             android:layout_height="match_parent">
 
             <EditText
-                android:id="@+id/tv_user_name"
+                android:id="@+id/edt_input_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="tên tài khoản"
-                android:maxLength="12"
+                android:maxLength="15"
                 android:singleLine="true" />
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
@@ -51,7 +51,7 @@
             android:layout_height="match_parent">
 
             <EditText
-                android:id="@+id/tv_email"
+                android:id="@+id/edt_input_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="email"
@@ -64,7 +64,7 @@
             android:layout_marginTop="0dp">
 
             <EditText
-                android:id="@+id/tv_password"
+                android:id="@+id/edt_input_pass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -83,7 +83,7 @@
             android:textSize="12sp" />
 
         <Button
-            android:id="@+id/btn_login_email"
+            android:id="@+id/btn_regis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

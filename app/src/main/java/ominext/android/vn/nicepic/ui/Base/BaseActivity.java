@@ -1,4 +1,4 @@
-package ominext.android.vn.nicepic.Base;
+package ominext.android.vn.nicepic.ui.Base;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
     private ProgressDialog mProgressDialog;
 
     @Override

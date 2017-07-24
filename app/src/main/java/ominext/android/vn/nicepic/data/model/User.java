@@ -1,4 +1,4 @@
-package ominext.android.vn.nicepic.Model;
+package ominext.android.vn.nicepic.data.model;
 
 /**
  * Created by MyPC on 24/07/2017.
@@ -23,6 +23,8 @@ public class User {
 
     public User() {
     }
+
+
 
     public String getUserId() {
         return userId;
