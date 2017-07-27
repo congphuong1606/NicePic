@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "829686734608",
+    "firebase_url": "https://nicepic-97375.firebaseio.com",
+    "project_id": "nicepic-97375",
+    "storage_bucket": "nicepic-97375.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:829686734608:android:bc9da77058a5ee79",
+        "android_client_info": {
+          "package_name": "ominext.android.vn.nicepic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "829686734608-9i5eoh73v7846tep6rf2h4mueq9645mt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ominext.android.vn.nicepic",
+            "certificate_hash": "775c5deb8bf895b438d467bc3d5f9779b6792dbf"
+          }
+        },
+        {
+          "client_id": "829686734608-4ne8n8l27j6ch93jiq80qa02o3j7jm7c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOkTjiFPHk-vrEe-oHnmswZSU8Zg7GEhU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "829686734608-4ne8n8l27j6ch93jiq80qa02o3j7jm7c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
