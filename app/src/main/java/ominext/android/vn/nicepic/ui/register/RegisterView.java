@@ -7,5 +7,5 @@ package ominext.android.vn.nicepic.ui.register;
 public interface RegisterView {
     void onRegisSuccess();
     void onRegisFail(String msg);
-    boolean onCheckInput(String useName, String email, String pass);
+    boolean onCheckInput();
 }

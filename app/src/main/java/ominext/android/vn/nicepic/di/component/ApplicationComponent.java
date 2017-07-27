@@ -1,26 +1,18 @@
 package ominext.android.vn.nicepic.di.component;
 
-import android.app.Application;
-import android.content.Context;
-
-import javax.inject.Singleton;
-
 import dagger.Component;
-import ominext.android.vn.nicepic.MyApplication;
-import ominext.android.vn.nicepic.di.ApplicationContext;
 import ominext.android.vn.nicepic.di.module.ApplicationModule;
+import ominext.android.vn.nicepic.di.module.FirebaseModule;
+import ominext.android.vn.nicepic.di.module.ViewModule;
 
 /**
  * Created by MyPC on 24/07/2017.
  */
-@Singleton
-@Component(modules = {ApplicationModule.class})
+
+@Component(modules = {
+        ApplicationModule.class,
+        FirebaseModule.class,
+        })
 public interface ApplicationComponent {
-    void injectTo(MyApplication myApplication);
-
-    @ApplicationContext
-    Context context();
-
-    Application getApplication();
-
+    ViewComponent plus(ViewModule viewModule);
 }

@@ -1,24 +1,25 @@
 package ominext.android.vn.nicepic.ui.register;
 
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import ominext.android.vn.nicepic.MyApplication;
 import ominext.android.vn.nicepic.R;
+import ominext.android.vn.nicepic.di.module.ViewModule;
+import ominext.android.vn.nicepic.ui.Base.BaseActivity;
 import ominext.android.vn.nicepic.ui.login.LoginActivity;
 import ominext.android.vn.nicepic.utils.UtilData;
 
-public class RegisterActivity extends AppCompatActivity implements RegisterView {
+public class RegisterActivity extends BaseActivity implements RegisterView {
+
     @BindView(R.id.edt_input_username)
     EditText edtInputUsername;
     @BindView(R.id.edt_input_email)
@@ -31,46 +32,60 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
     TextView btnResetPassword;
     @BindView(R.id.btn_back_login)
     Button btnBackLogin;
-    String name;
-    String email;
-    String pass;
+    @Inject
+    RegisPresenter regisPresenter;
+    private String useName;
+    private String email;
+    private String pass;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void initContentview() {
         setContentView(R.layout.activity_register);
-        ButterKnife.bind(this);
+    }
 
+    @Override
+    public void injectDependence() {
+        MyApplication.get().getComponent()
+                .plus(new ViewModule(this)).injectTo(this);
 
     }
+
+    @Override
+    public void binView() {
+        ButterKnife.bind(this);
+    }
+
+    @Override
+    public void initData() {
+
+    }
+
+
 
     @Override
     public void onRegisSuccess() {
         edtInputPass.setText("");
         edtInputUsername.setText("");
         edtInputEmail.setText("");
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Thông Báo");
-        builder.setMessage(getResources().getString(R.string.verifiation));
-        builder.setIcon(R.drawable.logo);
-        builder.setNegativeButton("ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                finish();
-            }
-        });
-        builder.create().show();
+        hideLoading();
+        onShowBuider(getResources().getString(R.string.verifiation));
+
+
     }
 
     @Override
     public void onRegisFail(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+        hideLoading();
+        onShowBuider(msg);
     }
 
     @Override
-    public boolean onCheckInput(String name,String email,String pass) {
-        if (UtilData.isEmpty(edtInputEmail) && UtilData.isEmpty(edtInputPass) && UtilData.isEmpty(edtInputUsername)) {
+    public boolean onCheckInput() {
+        if (UtilData.isEmpty(edtInputEmail) && UtilData.isEmpty(edtInputUsername)
+                &&UtilData.isEmpty(edtInputPass)) {
+            useName=edtInputUsername.getText().toString().trim();
+            email = edtInputEmail.getText().toString().trim();
+            pass = edtInputPass.getText().toString().trim();
             if (!UtilData.isEmailValid(email)) {
                 edtInputEmail.requestFocus();
                 edtInputEmail.setError(getResources().getString(R.string.email_error));
@@ -88,14 +103,15 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
         }
     }
 
+
     @OnClick({R.id.btn_regis, R.id.btn_reset_password, R.id.btn_back_login})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_regis:
-                name = edtInputEmail.getText().toString().trim();
-                email = edtInputUsername.getText().toString().trim();
-                pass = edtInputPass.getText().toString().trim();
-//                regisPresenter.onSignUp(name, email, pass);
+                if(onCheckInput()){
+                    showLoading();
+                    regisPresenter.onSignUp(useName, email, pass,this);
+                }
                 break;
             case R.id.btn_reset_password:
                 break;

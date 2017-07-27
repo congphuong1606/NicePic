@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="3"
+    android:background="#010201"
+    tools:context="ominext.android.vn.nicepic.ui.main.HomeActivity">
+
+
+
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/top2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+     >
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+
+            <RelativeLayout
+                android:id="@+id/top"
+                android:layout_width="match_parent"
+                android:layout_height="270dp"
+                android:clipToPadding="false"
+                android:paddingTop="50dp">
+
+                <android.support.v4.view.ViewPager
+
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <me.relex.circleindicator.CircleIndicator
+                    android:id="@+id/indicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="bottom"
+                    android:padding="10dip" />
+            </RelativeLayout>
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/main_toolbar"
+                android:layout_width="match_parent"
+                android:background="#cee4df"
+                android:layout_height="50dp"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="20dp"
+                        android:layout_toLeftOf="@+id/btn_creat_new_chat"
+                        android:layout_toRightOf="@+id/ic_me"
+                        android:orientation="vertical">
+
+                        <SearchView
+                            android:id="@+id/searchview"
+                            android:layout_width="match_parent"
+                            android:layout_height="36dp"></SearchView>
+
+                        <View
+                            android:layout_width="fill_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginLeft="25dp"
+                            android:background="#fd1717" />
+                    </LinearLayout>
+
+
+                    <ImageButton
+                        android:id="@+id/btn_creat_new_chat"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/ic_creat" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/ic_me"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/logo" />
+
+                </RelativeLayout>
+            </android.support.v7.widget.Toolbar>
+
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+            <android.support.v7.widget.RecyclerView
+                app:behavior_overlapTop="0dp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                android:id="@+id/rcv_group"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#fff" />
+
+
+
+</android.support.design.widget.CoordinatorLayout>

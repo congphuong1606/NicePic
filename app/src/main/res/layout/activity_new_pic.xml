@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context="ominext.android.vn.nicepic.ui.newpic.NewPicActivity">
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:background="@drawable/nophoto"
+            android:clickable="false" />
+
+        <ImageView
+            android:id="@+id/imv_upload"
+            android:layout_width="match_parent"
+            android:layout_height="400dp" />
+
+        <ImageButton
+            android:id="@+id/imb_choose_photo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignBottom="@+id/imv_upload"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_choose_photo" />
+
+        <ImageButton
+            android:id="@+id/imb_take_picture"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignBottom="@+id/imv_upload"
+            android:layout_marginBottom="10dp"
+            android:layout_toRightOf="@+id/imb_choose_photo"
+            android:background="@drawable/ic_take_picture" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.83">
+
+        <EditText
+            android:id="@+id/edt_pic_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:gravity="top|left"
+            android:hint="tên bức ảnh" />
+        <EditText
+            android:id="@+id/edt_image_description"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="top|left"
+            android:hint="chi tiết\n ..." />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/imb_send_upload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:text="upload"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/mybutton" />
+</LinearLayout>

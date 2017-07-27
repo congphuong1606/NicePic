@@ -5,6 +5,9 @@ package ominext.android.vn.nicepic.ui.login;
  */
 
 public interface LoginView {
-    void onLoginSuccess();
-    void onLOginFail(String msg);
+    void onSignInSuccess();
+
+    void onSignInFail(String msg);
+    void onViriFail();
+    boolean isCheckInputData();
 }
