@@ -57,24 +57,18 @@ public class HomeActivity extends BaseActivity implements HomeView {
     SharedPreferences preferences;
     @Inject
     HomePresenter homePresenter;
-
-
     @Override
     public void initContentview() {
         setContentView(R.layout.activity_home);
 
     }
-
     @Override
     public void injectDependence() {
         MyApplication.get().getComponent().plus(new ViewModule(this)).injectTo(this);
     }
-
     @Override
     public void binView() {
-
         ButterKnife.bind(this);
-
     }
 
     @Override

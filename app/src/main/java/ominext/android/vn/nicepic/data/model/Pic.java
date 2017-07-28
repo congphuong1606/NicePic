@@ -1,10 +1,12 @@
 package ominext.android.vn.nicepic.data.model;
 
+import java.io.Serializable;
+
 /**
  * Created by MyPC on 26/07/2017.
  */
 
-public class Pic {
+public class Pic implements Serializable {
     String picId;
     String picUser;
     String picUrl;

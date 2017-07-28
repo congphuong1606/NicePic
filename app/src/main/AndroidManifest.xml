@@ -31,7 +31,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.register.RegisterActivity" />
-        <activity android:name=".ui.picdetail.PicDetail" />
+        <activity android:name=".ui.picdetail.PicDetailActivity" />
         <activity android:name=".ui.main.HomeActivity" />
         <activity android:name=".ui.profile.ProfileActivity" />
         <activity android:name=".ui.newpic.NewPicActivity"></activity>
