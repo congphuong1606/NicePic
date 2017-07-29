@@ -3,6 +3,7 @@ package ominext.android.vn.nicepic.di.module;
 import dagger.Module;
 import dagger.Provides;
 import ominext.android.vn.nicepic.ui.Base.BaseActivity;
+import ominext.android.vn.nicepic.ui.login.LoginActivity;
 import ominext.android.vn.nicepic.ui.login.LoginView;
 import ominext.android.vn.nicepic.ui.main.HomeView;
 import ominext.android.vn.nicepic.ui.newpic.NewPicView;
@@ -15,30 +16,36 @@ import ominext.android.vn.nicepic.ui.register.RegisterView;
  */
 @Module
 public class ViewModule {
-    BaseActivity baseActivity;
-    LoginView loginView;
+       LoginView loginView;
     RegisterView registerView;
     ProfileView profileView;
     HomeView homeView;
     NewPicView newPicView;
     PicDetailView picDetailView;
 
-    public ViewModule(LoginView loginView, RegisterView registerView,
-                      ProfileView profileView, HomeView homeView,
-                      NewPicView newPicView, PicDetailView picDetailView) {
+    public ViewModule(LoginView loginView) {
         this.loginView = loginView;
+    }
+
+    public ViewModule(RegisterView registerView) {
         this.registerView = registerView;
+    }
+
+    public ViewModule(ProfileView profileView) {
         this.profileView = profileView;
+    }
+
+    public ViewModule(HomeView homeView) {
         this.homeView = homeView;
+    }
+
+    public ViewModule(NewPicView newPicView) {
         this.newPicView = newPicView;
+    }
+
+    public ViewModule(PicDetailView picDetailView) {
         this.picDetailView = picDetailView;
     }
-
-    public ViewModule(BaseActivity baseActivity) {
-        this.baseActivity=baseActivity;
-
-    }
-
 
     @Provides
     public NewPicView getNewPicView() {
