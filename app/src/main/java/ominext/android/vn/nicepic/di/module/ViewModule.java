@@ -16,7 +16,7 @@ import ominext.android.vn.nicepic.ui.register.RegisterView;
  */
 @Module
 public class ViewModule {
-       LoginView loginView;
+    LoginView loginView;
     RegisterView registerView;
     ProfileView profileView;
     HomeView homeView;
@@ -45,6 +45,11 @@ public class ViewModule {
 
     public ViewModule(PicDetailView picDetailView) {
         this.picDetailView = picDetailView;
+    }
+
+    @Provides
+    public PicDetailView getPicDetailView() {
+        return picDetailView;
     }
 
     @Provides

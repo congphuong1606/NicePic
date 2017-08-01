@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
@@ -44,7 +46,7 @@ public class NewPicActivity extends BaseActivity implements NewPicView, EventCli
 
     @BindView(R.id.edt_pic_name)
     EditText edtPicName;
-    private byte[] iByte;
+    private byte[] picByte;
     @Inject
     NewPicPresenter picPresenter;
 
@@ -93,8 +95,8 @@ public class NewPicActivity extends BaseActivity implements NewPicView, EventCli
     private void upload() {
         String picDescription = edtTitleUpload.getText().toString().trim();
         String PicName = edtPicName.getText().toString().trim();
-        if (iByte != null) {
-            picPresenter.uploadPic(iByte, PicName, picDescription);
+        if (picByte != null) {
+            picPresenter.uploadPic(picByte, PicName, picDescription);
         } else {
             onShowBuider("bạn cần chọn một bức hình");
         }
@@ -150,8 +152,9 @@ public class NewPicActivity extends BaseActivity implements NewPicView, EventCli
         if (bitmap != null) {
             ByteArrayOutputStream imageByte = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, imageByte);
-            iByte = imageByte.toByteArray();
+            picByte = imageByte.toByteArray();
         }
+        Glide.with(getApplicationContext()).load(picByte).into(imvUpload);
 
 
     }

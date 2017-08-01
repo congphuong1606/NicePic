@@ -73,7 +73,6 @@ public class HomePresenter {
                     for (DataSnapshot snapshot:dataSnapshot.getChildren()){
                         Pic pic=snapshot.getValue(Pic.class);
                         topPics.add(pic);
-
                     }
                     homeView.loadTopPicsSuccess(topPics);
                 }

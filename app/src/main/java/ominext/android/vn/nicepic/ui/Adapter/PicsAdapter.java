@@ -29,7 +29,7 @@ public class PicsAdapter extends RecyclerView.Adapter<PicsAdapter.PicViewHolder>
     View v;
     private ArrayList<Pic> pics;
     Context context;
-    private Pic pic;
+
 
     public PicsAdapter(ArrayList<Pic> pics) {
         this.pics = pics;
@@ -39,31 +39,41 @@ public class PicsAdapter extends RecyclerView.Adapter<PicsAdapter.PicViewHolder>
     @Override
     public PicViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_item_pic_small, parent, false);
-        context=v.getContext();
+        context = v.getContext();
         return new PicViewHolder(v);
     }
 
 
     @Override
     public void onBindViewHolder(PicViewHolder holder, int position) {
-       pic = pics.get(position);
+        Pic pic = pics.get(position);
+        String picUrl = pic.getPicUrl();
+
         holder.tvPicCmt.setText(pic.getPicCmt() + " comment");
         holder.tvPicLike.setText(pic.getPicLike() + " like");
-        Glide.with(context).load(pic.getPicUrl())
-                .into(holder.imvPic);
-        String picURL = pic.getPicUrl();
-        boolean isGif = picURL.charAt(picURL.length() - 1) == 'f' ? true : false;
+        boolean isGif = picUrl.charAt(picUrl.length() - 1) == 'f' ? true : false;
         if (isGif) {
             Glide.with(context)
-                    .load(pic.getPicUrl())
+                    .load(picUrl)
                     .asGif()
                     .into(holder.imvPic);
         } else {
             Glide.with(context)
-                    .load(pic.getPicUrl())
+                    .load(picUrl)
                     .into(holder.imvPic);
 
         }
+        holder.imvPic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("picDetail", pic);
+                Intent intent = new Intent(context, PicDetailActivity.class);
+                intent.putExtra("bundlePic", bundle);
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -71,12 +81,6 @@ public class PicsAdapter extends RecyclerView.Adapter<PicsAdapter.PicViewHolder>
         return pics.size();
     }
 
-    @OnClick(R.id.imv_pic)
-    public void onViewClicked() {
-        Bundle bundle=new Bundle();
-        bundle.putSerializable("picDetail",pic);
-        context.startActivity(new Intent(context, PicDetailActivity.class),bundle);
-    }
 
     public class PicViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.imv_pic)
@@ -89,7 +93,6 @@ public class PicsAdapter extends RecyclerView.Adapter<PicsAdapter.PicViewHolder>
         public PicViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-
         }
     }
 }

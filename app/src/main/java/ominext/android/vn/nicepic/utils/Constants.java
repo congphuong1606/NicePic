@@ -26,9 +26,17 @@ public class Constants {
     public static final String SPF_NAME = "vidslogin";
     public final static String USERS_PATH = "USER";
     public final static String PICS_PATH = "PICS";
+    public final static String CMTS_PATH = "CMTS";
     //storage
     public final static String IMAGE_AVATAR_PATH = "AVATARS";
     public final static String IMAGE_PIC_PATH = "PICS";
     public static final int REQUEST_TAKE_PHOTO = 1;
     public static final int REQUEST_CHOOSE_PHOTO = 0;
+//
+
+    public static final String CMT_ID="cmtId";
+    public static final String CMT_CONTENT="cmtContent";
+    public static final String CMT_TIME="cmtTime";
+    public static final String CMT_PIC="cmtPic";
+    public static final String CMT_USER="cmtUser";
 }

@@ -41,13 +41,6 @@ public class TopPicAdapter extends PagerAdapter {
     public Object instantiateItem(ViewGroup view, int position) {
         Context context = view.getContext();
         View imageLayout = inflater.inflate(R.layout.layout_top_pic, view, false);
-
-        ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-        int height = context.getResources().getDisplayMetrics().widthPixels;
-        layoutParams.height = (2*height) /5;
-        view.setLayoutParams(layoutParams);
-
-
         assert imageLayout != null;
         final ImageView imageView = (ImageView) imageLayout
                 .findViewById(R.id.imv_top_pic);

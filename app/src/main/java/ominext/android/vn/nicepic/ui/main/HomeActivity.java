@@ -12,6 +12,9 @@ import android.widget.SearchView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.logging.Handler;
 
 import javax.inject.Inject;
 
@@ -51,6 +54,8 @@ public class HomeActivity extends BaseActivity implements HomeView {
     ArrayList<Pic> topPics = new ArrayList<>();
     PicsAdapter picHomeAdapter;
     TopPicAdapter topPicAdapter;
+    //
+    private static int currentPage = 0;
     //
     RecyclerView.LayoutManager layoutManager;
     @Inject
@@ -104,6 +109,40 @@ public class HomeActivity extends BaseActivity implements HomeView {
     public void loadTopPicsSuccess(ArrayList<Pic> topPics) {
         viewPager.setAdapter(new TopPicAdapter(this, topPics));
         indicator.setViewPager(viewPager);
+        final android.os.Handler handler=new android.os.Handler();
+        final Runnable runnable=new Runnable() {
+            @Override
+            public void run() {
+                if(currentPage==3){
+                    currentPage=0;
+                }viewPager.setCurrentItem(currentPage++,true);
+            }
+        };
+        Timer swipeTimer = new Timer();
+        swipeTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(runnable);
+            }
+        }, 1500, 1500);
+        indicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            @Override
+            public void onPageSelected(int position) {
+                currentPage = position;
+
+            }
+
+            @Override
+            public void onPageScrolled(int pos, float arg1, int arg2) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int pos) {
+
+            }
+        });
     }
 
 
